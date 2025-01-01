@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.App {
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  color: #333;
+  background: #f0f0f0;
+  min-height: 100vh;
+}
+
+input[type="text"], input[type="number"], select {
+  width: 90%; /* Responsive width */
+  max-width: 300px; /* Maximum width to prevent being too wide on desktop */
+  margin: 5px 0; /* Smaller margin for a compact look */
+  padding: 10px 10px 10px 40px; /* Adjusted padding for icon */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-size: 24px 24px; /* Icon size */
+  background-position: 10px center; /* Icon position */
+  background-repeat: no-repeat;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+input, select {
+  display: block;
+  width: calc(100% - 20px); /* Adjust width for padding */
+}
+
+input[name="location"] { background-image: url('./assets/location.png'); }
+input[name="minPrice"] { background-image: url('./assets/pricedown.png'); }
+input[name="maxPrice"] { background-image: url('./assets/priceup.png'); }
+input[name="minBathrooms"] { background-image: url('./assets/minbaths.png'); }
+input[name="maxBathrooms"] { background-image: url('./assets/maxbaths.png'); }
+input[name="minBedrooms"] { background-image: url('./assets/minbeds.png'); } /* Assuming one icon for min and max */
+input[name="maxBedrooms"] { background-image: url('./assets/maxbeds.png'); }
+input[name="minSqft"] { background-image: url('./assets/minsqft.png'); }
+input[name="maxSqft"] { background-image: url('./assets/maxsqft.png'); }
+select[name="propertyType"] { background-image: url('./assets/housetypes.png'); }
+select[name="politicalType"] { background-image: url('./assets/politicaltype.png'); }
+
+button {
+  width: 90%;
+  max-width: 300px;
+  padding: 15px 10px; /* Increased padding for more height */
+  font-size: 16px; /* Optional: Increase font size for better visibility */
+  background-color: white;
+  color: #333; /* Changed text color for visibility */
+  border: 1px solid #ccc; /* Added border for better definition */
+  cursor: pointer;
+  background-image: url('./assets/search.png');
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.search-button {
+  width: 90%;
+  max-width: 300px;
+  height: 70px;
+  padding: 20px 10px; /* More vertical padding */
+  font-size: 18px; /* Larger text for visibility */
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-image: url('./assets/search.png');
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.search-button:hover {
+  background-color: #20c281;
+}
+
+button:hover {
+  background-color: #87bcea; /* Darker purple on hover */
+}
+
+.card-container {
+  width: 100%;
+  max-width: 600px; /* Limits card size on desktop */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.property-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: white;
+  text-align: center;
+  margin: 20px auto;
+  border: 1px solid navy;
+}
+
+.property-card:hover {
+  background-color: #eaecf3;
+}
+
+.property-card img {
+  max-width: 100%; /* Ensures the image does not exceed the card's width */
+  height: auto; /* Maintains the aspect ratio */
+  display: block; /* Removes any unwanted space around the image */
+  margin: 0 auto 20px; /* Centers the image horizontally and adds space below */
+  border: 1px solid navy;
+}
+
+
+.property-card p,
+.property-card select {
+  position: relative;
+  padding-left: 35px; /* Space for icon */
+}
+
+.property-card p:before,
+.property-card select:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Assigning specific icons to each type of data */
+.property-card p:nth-child(3):before { /* lcation */
+  background-image: url('./assets/location.png'); /* No specific icon, or create a composite icon if needed */
+}
+
+.property-card p:nth-child(4):before { /* Price */
+  background-image: url('./assets/price.png'); /* Change as per specific cases like democrat.png or republican.png based on content */
+}
+
+.property-card p:nth-child(5):before { /* bed,bath,sqft type */
+  background-image: url('./assets/floorplan.png'); 
+  /*background-image: url('./assets/bedroom.png');
+  background-image: url('./assets/sqft.png');*/
+}
+
+.property-card .political-affiliation:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+}
+
+.property-card .political-affiliation.democrat:before {
+  background-image: url('./assets/democrat.png');
+}
+
+.property-card .political-affiliation.republican:before {
+  background-image: url('./assets/republican.png');
+}
+
+.property-card .property-type:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+}
+
+.property-card .property-type.townhomes:before {
+  background-image: url('./assets/townhouse.png');
+}
+
+.property-card .property-type.houses:before {
+  background-image: url('./assets/house.png');
+}
+
+/* Add rules for each property type */
+.property-card .property-type.apartments:before {
+  background-image: url('./assets/apartment.png');
+}
+
+.property-card .property-type.condos:before {
+  background-image: url('./assets/condo.png');
+}
+
+.property-card .property-type.apartments_condos_co-ops:before {
+  background-image: url('./assets/co-op.png');
+}
+
+.property-card .property-type.multi-family:before {
+  background-image: url('./assets/multifamily.png');
+}
+
+.property-card .property-type.manufactured:before {
+  background-image: url('./assets/manufactured.png');
+}
+
+.property-card .property-type.lotsland:before {
+  background-image: url('./assets/lot.png');
+}
+
+.property-card .property-type.default-image:before {
+  background-image: url('./assets/defaulthome.png');
+}
+
+.property-card select[name="propertyType"]:before {
+  background-image: url('./assets/housetypes.png');
+}
+
+.property-card select[name="politicalType"]:before {
+  background-image: url('./assets/politicaltype.png');
+}
+
+.chart-container {
+  width: 100%;
+  height: 350px; /* New height for the chart */
+}
+
+.property-card {
+  padding-bottom: 90px; /* More padding at the bottom */
+}
+
+.prev, .next {
+  width: 30px; /* Reduced width */
+  height: 30px; /* Added fixed height */
+  padding: 5px; /* Reduced padding */
+  margin: 0; /* Remove margins */
+  position: absolute; /* Positioning it absolutely within the card */
+  top: 50%; /* Align vertically */
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.prev {
+  top: 15px;
+  left: 0px; /* Position from the left */
+  background-image: url('./assets/previous.png');
+}
+
+.next {
+  top: 15px;
+  right: 0px; /* Position from the right */
+  background-image: url('./assets/next.png');
+}
+
+
+.prev { background-image: url('./assets/previous.png'); }
+.next { background-image: url('./assets/next.png'); }
+.chart-button { background-image: url('./assets/current.png'); } /* Adjust accordingly for each button */
+
+.property-card .chart-buttons {
+  display: flex;
+  justify-content: space-around; /* Evenly space around */
+  align-items: center; /* Center align vertically */
+  padding: 10px 0; /* Padding on top and bottom */
+  position: absolute;
+  bottom: 10px; /* Positioned at the bottom */
+  left: 0;
+  right: 0;
+  height: 50px; /* Fixed height for buttons */
+}
+
+.property-card .chart-button:nth-child(1) { background-image: url('./assets/current.png'); }
+.property-card .chart-button:nth-child(2) { background-image: url('./assets/5years.png'); }
+.property-card .chart-button:nth-child(3) { background-image: url('./assets/10years.png'); }
+.property-card .chart-button:nth-child(4) { background-image: url('./assets/20years.png'); }
+
+.chart-button {
+  flex-grow: 1;
+  margin: 0 10px; /* Maintain spacing */
+  height: 40px;
+  padding: 15px 20px; /* Increased padding for height */
+  color: white;
+  border-radius: 5px;
+  font-size: 18px; /* Readable font size */
+  margin: 10px;
+}
+
+@media (max-width: 600px) {
+  .prev, .next, .chart-button {
+    font-size: 0.6rem;
+    padding: 5px;
+  }
+  .property-card .chart-buttons {
+    left: 5%;
+    right: 5%;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 600px) {
+  .App {
+    padding: 10px;
+  }
+
+  input[type="text"], input[type="number"], select, button {
+    width: 100%; /* Adjust width */
+    max-width: none; /* Remove max-width */
+  }
+
+  .property-card {
+   /* transform: scale(0.9); 
+    transform-origin: center top*/
+    width: 90%; /* Adjust width for smaller screens */
+    max-width: none; /* Adjust max-width */
+  }
+
+  .chart-container {
+    height: 250px; /* Adjust chart container height for smaller screens */
+  }
+}
