@@ -1,78 +1,82 @@
+<p float="left">
+  <img src="https://i.postimg.cc/mDcFFCGx/Screenshot-2024-12-13-at-12-44-52-PM.jpg" width="225px" height="550px">
+  <img src="https://i.postimg.cc/rpZrmg3C/Screenshot-2024-12-13-at-12-44-16-PM.jpg" width="225px" height="550px">
+  <img src = "https://i.postimg.cc/gJfLyjYx/Screenshot-2024-12-13-at-12-44-30-PM.jpg" width="225px" height="550px">
+</p>
+
+
 # MyPropertyApp
 
-MyPropertyApp is an application built with React and Flask that assists users in locating properties within a certain ZIP code and related areas. The software offers property listings and more filtering choices, such as radius-based searches, by utilizing the Zillow and Geoapify APIs. For smooth deployment across environments, it is Dockerized. 
+MyPropertyApp is an application built with React, Flask, and .NET Core with Entity Framework that assists users in locating properties within a certain city, state. The software offers property listings and more filtering choices, such as filter-based searches, by utilizing the Zillow APIs. For smooth deployment across environments, it is Dockerized. 
 
 ---
 
 ## **Features**
 
-- **ZIP Code Search**: Input a ZIP code to find housing listings within the area.
-- **Radius Filtering**: Option to select a radius (e.g., 5, 10 miles) to include listings from nearby.
-- **Property Details**:
-  - View prices, addresses, and other key details.
-  - View property images for a better experience.
-- **Interactive UI**: Programmed with React for a user-friendly, responsive design.
+- **Dynamic Property Search**: Users can search for properties by location, price range, property type, and other criteria.
+- **Future Price Visualization:** Uses the Prophet library to forecast property prices, which improves investment decisions.
+- **Responsive Design**: Developed with React to ensure a consistent experience across all devices.
+- **User Preferences**: Uses Entity Framework to perform CRUD actions on user preferences that persist between sessions.
+- **API/Data Integration**: Uses Zillow for real-time property data and New York Time's JSON data for political analysis.
+
+---
+
+## **Frameworks**
+
+- **Front-End**: React enables dynamic and interactive user interfaces.
+  - **CSS**: Styles for frontend components.
+  - **JavaScript/JSX**: Used to handle UI logic and API queries.
+- **Back-End**: Flask serves the backend API, which interacts with front-end queries.
+  - **Prophet**: Used to forecast property prices based on historical data.
+- **Databases**: Entity Framework is used in .NET to persist data and store user preferences in SQL databases.
+- **APIs**: Include Zillow's Rapid API endpoints, which provides detailed information on properties and their Zestimate data, in order to model chart data and future-trend visualization.
+- **New York Times JSON Data**: To enhance search capability with political preferences data.
 
 ---
 
 ## **Setup**
 
-### **1. Install Image**
-Ensure Docker is installed.  
-Then, run this command to pull the Docker Image:
+### **1. Clone Repo (Optional)**
+
+Run this command to pull and view the Repo:
 
 ```
-docker pull rs2070/mypropertyapp
+git clone https://github.com/rs2070/independent-study.git
+cd independent-study
 ```
 
-### **2. Run Locally**
-Start this application with the command:
+### **2. Build Docker Image**
+
+Ensure Docker is installed, then build this application with the command:
 
 ```
-docker run -p 3000:3000 rs2070/mypropertyapp
+docker build -t mypropertyapp .
 ```
+
+### **3. Run Container**
+
+Run:
+
+```
+docker run -p 3000:3000 mypropertyapp
+```
+
 Open any browser, and head to ```http://localhost:3000``` to view the application.
-
-### **3. Access on Other Devices**
-
-To ensure that this program is accessible/viewable across other devices using the same network, find your device's local IP:
-
--macOS/Linux: Type ```ifconfig``` in Terminal.
-
--Windows: Type ```ipconfig``` in Command Prompt.
-
-Then, to the run the container using this IP, you can run the command:
-
-```
-docker run -p 3000:3000 rs2070/mypropertyapp
-```
-
-Now for other devices on the same network, open a browser and go to http://[your-IP]:3000.
 
 ---
 
-### **About**
-Front-end: React (and Axios for API calls).
+## **Documentation**
 
-Back-end: Flask.
+API documentation is available at ```/api/docs``` for backend endpoints utilized by frontend services.
 
-APIs:
+---
 
--Zillow: Receive property data for specific city.
+## **Limitations**
 
--Geoapify: Fetch cities within specific radius.
+Ensure that Zillow's API keys are up to date, as the present keys may be limited to a particular number of monthly calls.
+The application is designed to run in a development environment; however, changes are required for production deployment to improve security and performance.
 
-Deployment: Dockerized to ensure playability for cross-platform.
+---
 
-Future Features:
-
--User Preferences: Retrieve/store user preferences using SQL databases.
-
--Advanced Filtering: More filtering options for property type, amenities, and so forth.
-
-Limitations:
-
--Ensure valid US-ZIP codes are inputted for accurate results.
-
--API limits may affect the number of results fetched.
-
+## **Note**
+This project is currently a working demo with further implementations planned to iron out front-end processing. The present version of the application uses free-tier APIs, which may limit its usefulness due to rate limiting or data cap constraints. The displayed statistics, particularly the forecast and property photos, are for demonstration purposes and may not always reflect real-time changes owing to API constraints.
